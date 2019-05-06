@@ -5,5 +5,5 @@ sed 's#,#.#g' dataToUpperCase.csv > dataWithOutComma.csv
 sed 's#;#.#4' dataWithOutComma.csv > dataWithOutCommaLastOcurrence.csv
 sed 's#;N#;\\N#g' dataWithOutCommaLastOcurrence.csv  > dateReplaceOnlyNWithNull.csv
 sed 's#;;#;\\N;#g' dateReplaceOnlyNWithNull.csv  > dataReplaceSlashN.csv
-sed 's#;\r#;\\N\r#' dataReplaceSlashN.csv  > dataReplaceSlashNEndingLine.csv
+sed 's#;\r$#;\\N\r#g' dataReplaceSlashN.csv  > dataReplaceSlashNEndingLine.csv
 sed 's#;#,#g' dataReplaceSlashNEndingLine.csv  > dataReplaceComa.csv
