@@ -1,9 +1,9 @@
 # Escriba su código aquí
-sed 's#\([0-9][0-9]\)/\([0-9][0-9]\)/\([0-9][0-9]\)#20\3-\2-\1#' data.csv > dataYearFormat.csv 
-sed 's#[a-z]#\U&#g' dataYearFormat.csv > dataToUpperCase.csv 
-sed 's#,#.#g' dataToUpperCase.csv > dataWithOutComma.csv 
-
-sed 's#\\N# #g' dataYearFormat.csv  > dataNCorrection.csv
-sed 's#;;#; ;#g' dataNCorrection.csv  > dataNCorrectionNoSlash.csv
-sed 's#;;#;\\N;#g' dataNCorrectionNoSlash.csv  > dataReplaceSlashN.csv
-sed 's#\(.*\);#\1#g' dataNoNull.csv  > dataNoNullCorrection.csv
+sed 's#\([0-9][0-9]\)/\([0-9][0-9]\)/\([0-9][0-9]\)#20\3-\2-\1#' data.csv > dataYearFormat.csv
+sed 's#[a-z]#\U&#g' dataYearFormat.csv > dataToUpperCase.csv
+sed 's#,#.#g' dataToUpperCase.csv > dataWithOutComma.csv
+sed 's#;#.#4' dataWithOutComma.csv > dataWithOutCommaLastOcurrence.csv
+sed 's#;N#;\\N#g' dataWithOutCommaLastOcurrence.csv  > dateReplaceOnlyNWithNull.csv
+sed 's#;;#;\\N;#g' dateReplaceOnlyNWithNull.csv  > dataReplaceSlashN.csv
+sed 's#;\r#;\\N\r;#' dataReplaceSlashN.csv  > dataReplaceSlashNEndingLine.csv
+sed 's#;#,#g' dataReplaceSlashNEndingLine.csv  > dataReplaceComa.csv
