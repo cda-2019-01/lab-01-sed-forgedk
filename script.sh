@@ -1,9 +1,12 @@
 # Escriba su código aquí
-sed 's#\([0-9][0-9]\)/\([0-9][0-9]\)/\([0-9][0-9]\)#20\3-\2-\1#' data.csv > dataYearFormat.csv
-sed 's#[a-z]#\U&#g' dataYearFormat.csv > dataToUpperCase.csv
-sed 's#,#.#g' dataToUpperCase.csv > dataWithOutComma.csv
-sed 's#;#.#4' dataWithOutComma.csv > dataWithOutCommaLastOcurrence.csv
-sed 's#;N#;\\N#g' dataWithOutCommaLastOcurrence.csv  > dateReplaceOnlyNWithNull.csv
-sed 's#;;#;\\N;#g' dateReplaceOnlyNWithNull.csv  > dataReplaceSlashN.csv
-sed 's#;\r$#;\\N\r#g' dataReplaceSlashN.csv  > dataReplaceSlashNEndingLine.csv
-sed 's#;#,#g' dataReplaceSlashNEndingLine.csv  > dataReplaceComa.csv
+#! /usr/bin/env bash
+mkdir temp
+sed 's#\([0-9][0-9]\)/\([0-9][0-9]\)/\([0-9][0-9]\)#20\3-\2-\1#' data.csv > temp/outYearFormat.csv
+sed 's#[a-z]#\U&#g' temp/outYearFormat.csv > temp/outToUperCase.csv
+sed 's#,#.#g' temp/outToUperCase.csv > temp/outWithOutComa.csv
+sed 's#;#.#4' temp/outWithOutComa.csv > temp/outWithOutComaLastOcurrence.csv
+sed 's#;N#;\\N#g' temp/outWithOutComaLastOcurrence.csv  > temp/outReplaceOnlyNWithNull.csv
+sed 's#;;#;\\N;#g' temp/outReplaceOnlyNWithNull.csv  > temp/outReplaceSlashN.csv
+sed 's#;\r$#;\\N\r#g' temp/outReplaceSlashN.csv  > temp/outReplaceSlashNEndingLine.csv
+sed 's#;#,#g' temp/outReplaceSlashNEndingLine.csv  > Final.csv
+rm -r temp
