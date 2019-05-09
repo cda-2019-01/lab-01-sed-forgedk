@@ -10,3 +10,4 @@ sed 's#;;#;\\N;#g' temp/outReplaceOnlyNWithNull.csv  > temp/outReplaceSlashN.csv
 sed 's#;\r$#;\\N\r#g' temp/outReplaceSlashN.csv  > temp/outReplaceSlashNEndingLine.csv
 sed 's#;#,#g' temp/outReplaceSlashNEndingLine.csv  > Final.csv
 rm -r temp
+sed '/\\N/d' Final.csv
