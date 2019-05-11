@@ -8,6 +8,6 @@ sed 's#;#.#4' temp/outWithOutComa.csv > temp/outWithOutComaLastOcurrence.csv
 sed 's#;N#;\\N#g' temp/outWithOutComaLastOcurrence.csv  > temp/outReplaceOnlyNWithNull.csv
 sed 's#;;#;\\N;#g' temp/outReplaceOnlyNWithNull.csv  > temp/outReplaceSlashN.csv
 sed 's#;\r$#;\\N\r#g' temp/outReplaceSlashN.csv  > temp/outReplaceSlashNEndingLine.csv
-sed 's#;#,#g' temp/outReplaceSlashNEndingLine.csv  > Final.csv
+sed 's#;#,#g' temp/outReplaceSlashNEndingLine.csv  |sed '/\\N/d' 
 rm -r temp
-sed '/\\N/d' Final.csv
+
